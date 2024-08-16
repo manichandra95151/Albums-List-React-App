@@ -1,18 +1,15 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
 
 const EditAlbum = (props) => {
   const [title, setTitle] = useState("");
-  // const [content, setContent] = useState("");
   const [id, setId] = useState("");
-  const navigate = useNavigate();
+  
 
   // retrieving data from local storage and setting in the "state" variables
 
   useEffect(() => {
     setTitle(localStorage.getItem("title"));
-    // setContent(localStorage.getItem("content"));
     setId(localStorage.getItem("id"));
   }, []);
 
@@ -27,7 +24,6 @@ const EditAlbum = (props) => {
       body: JSON.stringify({
         id: id,
         title: title,
-        userId: 1,
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -39,10 +35,9 @@ const EditAlbum = (props) => {
       props.data[id-1] = json;
     })
 
-    alert("Updated successfully!")
+    alert("Updated successfully!")  
     setTitle("");
-    navigate("/");
-    // setContent("");
+  
   };
 
   return (
@@ -59,16 +54,7 @@ const EditAlbum = (props) => {
           required
         />
         <hr />
-        {/* <label htmlFor="content">Enter New Content</label>
-        <textarea
-          placeholder="Type new content..."
-          id="content"
-          onChange={(e) => setContent(e.target.value)}
-          name="content"
-          value={content}
-        /> */}
         <button onClick={handleUpdate}>Update</button>
-        
       </form>
     </div>
   );
