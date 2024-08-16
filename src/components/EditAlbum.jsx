@@ -12,6 +12,7 @@ const EditAlbum = (props) => {
 
   useEffect(() => {
     setTitle(localStorage.getItem("title"));
+    // setContent(localStorage.getItem("content"));
     setId(localStorage.getItem("id"));
   }, []);
 
@@ -41,6 +42,7 @@ const EditAlbum = (props) => {
     alert("Updated successfully!")
     setTitle("");
     navigate("/");
+    // setContent("");
   };
 
   return (
@@ -57,6 +59,14 @@ const EditAlbum = (props) => {
           required
         />
         <hr />
+        {/* <label htmlFor="content">Enter New Content</label>
+        <textarea
+          placeholder="Type new content..."
+          id="content"
+          onChange={(e) => setContent(e.target.value)}
+          name="content"
+          value={content}
+        /> */}
         <button onClick={handleUpdate}>Update</button>
         
       </form>
